@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=StarCraft
+Comment=The Ultimate Real-time Strategy Game
+Exec=starcraft %U
+Icon=com.blizzard.StarCraft
+StartupNotify=true
+Terminal=false
+Type=Application
+MimeType=application/x-ms-dos-executable;application/x-msi;application/x-ms-shortcut;
+Categories=Game;StrategyGame;
+Keywords=StarCraft;StarCraft;sc;Blizzard;Real-time;Strategy;

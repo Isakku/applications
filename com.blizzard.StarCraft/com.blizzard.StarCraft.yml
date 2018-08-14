@@ -1,0 +1,126 @@
+app-id: com.blizzard.StarCraft
+branch: stable
+
+runtime: org.winepak.Platform
+runtime-version: 3.0
+sdk: org.winepak.Sdk
+
+base: com.blizzard.BattleNet.BaseApp
+base-version: stable
+
+command: StarCraft
+
+inherit-extensions:
+  - org.winepak.Platform.Compat32
+  - org.winepak.Platform.Extension.corefonts
+  - org.winepak.Platform.Extension.vcrun2015
+
+add-extensions:
+  org.winepak.Platform.Wine:
+    directory: lib/wine
+    version: 3.11-staging
+    add-ld-path: lib
+    no-autodownload: false
+    
+  org.winepak.Platform.Wine.Compat32:
+    directory: lib/wine-32bit
+    version: 3.11-staging
+    add-ld-path: lib
+    no-autodownload: false
+    
+tags:
+  - proprietary
+
+finish-args:
+  - --socket=x11
+  - --socket=pulseaudio
+  - --share=ipc
+  - --share=network
+  - --device=dri
+  - --allow=multiarch
+  - --allow=devel
+  - --filesystem=xdg-documents
+    
+modules:
+  - name: setup-wine
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/lib/wine
+    
+  - name: setup-wine-compat32
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/lib/wine-32bit
+    
+  - name: StarCraft
+    only-arches:
+      - x86_64
+    buildsystem: simple
+    build-commands:
+      - install -d /app/bin
+      - install StarCraft-installer /app/bin
+      - install StarCraft /app/bin
+      - install -Dm644 com.blizzard.StarCraft.appdata.xml /app/share/appdata/com.blizzard.StarCraft.appdata.xml
+      - install -Dm644 com.blizzard.StarCraft.desktop /app/share/applications/com.blizzard.StarCraft.desktop
+      - install -Dm664 com.blizzard.StarCraft.svg /app/share/icons/hicolor/scalable/apps/com.blizzard.StarCraft.svg
+    sources:
+      - type: script
+        dest-filename: StarCraft-installer
+        commands:
+          - if [ -z "$WINEPREFIX" ] ; then
+          - '    echo "No wine prefix set or is empty, abort."'
+          - '    exit 1'
+          - fi
+          - 
+          - source /app/bin/battlenet-installer "battlenet://starcraft"
+          -
+          - if [[ $? != 0 ]] ; then
+          - '    echo "Battle.net installer failed, abort."'
+          - '    exit 1'
+          - fi
+          - 
+          - if [ -e "${WINEPREFIX}/dosdevices/c:/Program Files (x86)/StarCraft" ] ; then
+          - '    echo "This prefix already has an exisiting ''StarCraft'' install at ${WINEPREFIX}"'
+          - '    echo "In order to install ''StarCraft'' you must move or delete the current prefix."'
+          - '    exit 1'
+          - fi
+          - 
+          - echo "Set OffScreenRenderingMode to pbuffer..."
+          - wine64 reg add "HKEY_CURRENT_USER\Software\Wine\Direct3D" /v "OffScreenRenderingMode" /d "pbuffer" /f
+          - 
+          - echo "Enable GLSL..."
+          - wine64 reg add "HKEY_CURRENT_USER\Software\Wine\Direct3D" /v "UseGLSL" /d "enabled" /f
+          - 
+          - echo "Set VertexShaderMode to hardware..."
+          - wine64 reg add "HKEY_CURRENT_USER\Software\Wine\Direct3D" /v "VertexShaderMode" /d "hardware" /f
+          - 
+          - echo "Setting Windows 10 mode for Wine"
+          - wine64 reg add "HKEY_CURRENT_USER\Software\Wine\" /v "Version" /d "win10" /f
+          - 
+          - echo "Installer finished"
+      - type: script
+        dest-filename: StarCraft
+        commands:
+          - export WINEARCH=win64
+          - 
+          - if ! [ -e "${WINEPREFIX}/dosdevices/c:/Program Files (x86)/Battle.net" ] ; then
+          - '    source /app/bin/StarCraft-installer'
+          - '    if [[ $? != 0 ]] ; then'
+          - '        echo "Installation failed, abort."'
+          - '        exit 1'
+          - '    fi'
+          - fi
+          - 
+          - echo "Verify \"Battle.net Helper.exe\" doesn't launch..."
+          - if [ -f "${WINEPREFIX}/dosdevices/c:/Program Files (x86)/Battle.net/Battle.net*/Battle.net Helper.exe" ] ; then
+          - '    mv "${WINEPREFIX}/dosdevices/c:/Program Files (x86)/Battle.net/Battle.net*/Battle.net Helper.exe" "${WINEPREFIX}/dosdevices/c:/Program Files (x86)/Battle.net/Battle.net*/Battle.net Helper.exe.bak"'
+          - fi
+          - 
+          - wine64 "${WINEPREFIX}/dosdevices/c:/Program Files (x86)/Battle.net/Battle.net Launcher.exe" "battlenet://starcraft"
+      - type: file
+        path: com.blizzard.StarCraft.appdata.xml
+      - type: file
+        path: com.blizzard.StarCraft.desktop
+      - type: file
+        path: com.blizzard.StarCraft.svg
+

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+    <id>com.blizzard.StarCraft.desktop</id>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>LicenseRef-proprietary</project_license>
+    <name>StarCraft</name>
+    <summary>The Ultimate Real-time Strategy Game</summary>
+    <summary xml:lang="pt_BR">Estratégia em tempo real (RTS)</summary>
+    <summary xml:lang="es">(RTS) Estrategia en tiempo real</summary>
+    <description><p>Infinite fronts, infinite enemies. Real-time Strategy Restored. Command the mechanized Terrans, psi-powered Protoss, and insectoid Zerg as they vie for map control of eight unique environments. Build your base and conscript your army in a real-time, military sci-fi vision of the future. Once you’ve finished the campaign, go head-to-head or team up with other players online. Pit StarCraft’s iconic, radically-different races against one another in the ultimate theater of war.</p></description>
+    <description xml:lang="pt_BR"><p>Batalhas infinitas, inimigos infinitos.Estratégia em tempo real revitalizada. Lidere os terranos com suas máquinas mortíferas, os protoss de poderes psiônicos, e os zergs insectiformes em batalhas territoriais por oito cenários únicos. Mergulhe num futuro militarista de ficção-científica. Construa uma base e aliste o seu exército. Tudo isto numa experiência em tempo real! Terminou a campanha? Então aproveite para enfrentar ou cooperar com outros jogadores em batalhas online. Você terá o maior palco de guerra do universo à sua disposição, onde as inigualáveis raças de StarCraft se enfrentarão ao seu comando.</p></description>
+    <description xml:lang="es"><p>Infinidad de frentes, infinidad de enemigos Estrategia en tiempo real renovada. Dirige a los terran mecanizados, a los protoss con energía psiónica y a los zerg insectoides en su lucha por obtener el control del mapa en ocho entornos únicos. Construye tu base y recluta a tu ejército en tiempo real en esta versión militarizada de un futuro de ciencia ficción. Cuando hayas terminado la campaña, disfruta de las batallas en línea, tanto en equipo como mano a mano contra otro jugador. Enfrenta a las razas emblemáticas y radicalmente diferentes de StarCraft en el escenario de guerra final.</p></description>
+
+    <screenshots>
+        <screenshot type="default">
+            <image width="1200" height="630">https://static.starcraft.com/images/content/share/share-1200x630-ca2d9035c74f9bb10faf142c83f76b47c909d6bbb177522676428d590c92ac16c99a92d1aea0afd4bbbd269e88b4341c4840d183d5555504f305c5a2a484469a.jpg</image>
+        </screenshot>
+        <screenshot>
+            <image width="1280" height="720">https://static.starcraft.com/videos/posters/terran-base-sd.mp4-8acd31f975586586c1cea364b36af668a85d93e8784e01b384f062cd68206621b3c0709c597e266f4b8adb034779025bd5939a16dbbbbcf380db4215fb6ef7c8.jpg</image>
+        </screenshot>
+        <screenshot>
+            <image width="1920" height="1080">https://bnetcmsus-a.akamaihd.net/cms/gallery/WP69H5HSD4JL1498596196607.png</image>
+        </screenshot>
+        <screenshot>
+            <image width="1920" height="1080">https://bnetcmsus-a.akamaihd.net/cms/gallery/U9E1ZAJGH5FF1498596198839.png</image>
+        </screenshot>
+        <screenshot>
+            <image width="1920" height="1080">https://bnetcmsus-a.akamaihd.net/cms/gallery/U9M6B5REQJ9T1498596196575.png</image>
+        </screenshot>
+        <screenshot>
+            <image width="2560" height="1600">https://bnetcmsus-a.akamaihd.net/cms/gallery/OKZIMO3EP35I1498596201630.png</image>
+        </screenshot>
+    </screenshots>
+    
+    <project_group>winepak</project_group>
+    <developer_name>Blizzard Entertainment</developer_name>
+
+    <url type="homepage">https://StarCraft.com</url>
+    <url type="help">https://us.battle.net/support/en/games/StarCraft</url>
+    <url type="bugtracker">https://us.battle.net/forums/en/starcraft/22814093/</url>
+
+    <categories>
+        <category>Game</category>
+        <category>StrategyGame</category>
+    </categories>
+
+    <recommends>
+        <memory>2048</memory>
+    </recommends>
+
+    <content_rating type="oars-1.1">
+        <content_attribute id="violence-cartoon">none</content_attribute>
+        <content_attribute id="violence-fantasy">intense</content_attribute>
+        <content_attribute id="violence-realistic">none</content_attribute>
+        <content_attribute id="violence-bloodshed">intense</content_attribute>
+        <content_attribute id="violence-sexual">none</content_attribute>
+        <content_attribute id="violence-desecration">none</content_attribute>
+        <content_attribute id="violence-slavery">none</content_attribute>
+        <content_attribute id="violence-worship">none</content_attribute>
+        <content_attribute id="drugs-alcohol">moderate</content_attribute>
+        <content_attribute id="drugs-narcotics">none</content_attribute>
+        <content_attribute id="drugs-tobacco">moderate</content_attribute>
+        <content_attribute id="sex-nudity">none</content_attribute>
+        <content_attribute id="sex-themes">none</content_attribute>
+        <content_attribute id="sex-homosexuality">none</content_attribute>
+        <content_attribute id="sex-prostitution">none</content_attribute>
+        <content_attribute id="sex-adultery">none</content_attribute>
+        <content_attribute id="sex-appearance">moderate</content_attribute>
+        <content_attribute id="language-profanity">mild</content_attribute>
+        <content_attribute id="language-humor">none</content_attribute>
+        <content_attribute id="language-discrimination">none</content_attribute>
+        <content_attribute id="social-chat">intense</content_attribute>
+        <content_attribute id="social-info">none</content_attribute>
+        <content_attribute id="social-audio">none</content_attribute>
+        <content_attribute id="social-location">none</content_attribute>
+        <content_attribute id="social-contacts">none</content_attribute>
+        <content_attribute id="money-purchasing">none</content_attribute>
+        <content_attribute id="money-gambling">none</content_attribute>
+    </content_rating>
+
+    <releases>
+        <release date="2018-08-14" version="2018.08.14">
+            <description>
+                <ul>
+                    <li>Initial release of StarCraft via winepak.</li>
+                </ul>
+            </description>
+        </release>
+    </releases>
+</component>
